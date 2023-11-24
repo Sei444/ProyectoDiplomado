@@ -40,7 +40,7 @@ public class RolController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<RolDTO> updateRol(@PathVariable("id") Integer rolId, @RequestBody RolDTO rol) {
+    public ResponseEntity<RolDTO> updateRol(@PathVariable("id") Long rolId, @RequestBody RolDTO rol) {
 
         return ResponseEntity.ok().body(rolServices.updateRol(rolId, rol));
     }

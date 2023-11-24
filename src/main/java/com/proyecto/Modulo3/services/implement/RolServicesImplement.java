@@ -47,11 +47,6 @@ public class RolServicesImplement implements RolServices {
         return this.rolMapper.toDto(rolRepository.save(this.rolMapper.toEntity(rolDTO)));
     }
 
-    @Override
-    public RolDTO updateRol(Integer id, RolDTO rol) {
-        return null;
-    }
-
 
 
     @Override
