@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class UserDetail {
     @Getter @Setter
     @jakarta.persistence.Id
-    @org.springframework.data.annotation.Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;

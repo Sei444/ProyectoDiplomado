@@ -9,7 +9,7 @@ import org.yaml.snakeyaml.events.Event;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @jakarta.persistence.Id
