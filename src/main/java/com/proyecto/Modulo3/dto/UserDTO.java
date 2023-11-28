@@ -2,36 +2,26 @@ package com.proyecto.Modulo3.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
+@Getter @Setter
+@ToString
 public class UserDTO {
-    @Getter
-    @Setter
-    private Long id;
 
-    @Getter
-    @Setter
+    private Integer id;
     private String username;
-
-    @Getter
-    @Setter
     private String password;
-
-    @Getter
-    @Setter
     private String email;
-
-    @Getter
-    @Setter
     private LocalDateTime createAt;
-
-    @Getter
-    @Setter
     private UserDetailDTO userDetailDTO;
-
-    @Getter
-    @Setter
     private List<RolDTO> roles;
+
+
+    public UserDTO() {
+
+    }
 }

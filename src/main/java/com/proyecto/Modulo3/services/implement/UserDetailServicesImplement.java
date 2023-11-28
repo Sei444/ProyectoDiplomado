@@ -31,7 +31,7 @@ public class UserDetailServicesImplement implements UserDetailServices {
     }
 
     @Override
-    public UserDetailDTO getUserDetail(Long id) {
+    public UserDetailDTO getUserDetail(Integer id) {
         List<UserDetail> listUserDetail = userDetailRepository.findAll();
         UserDetail res = new UserDetail();
         for (UserDetail aux : listUserDetail) {
@@ -50,7 +50,7 @@ public class UserDetailServicesImplement implements UserDetailServices {
     }
 
     @Override
-    public UserDetailDTO updateUserDetail(Long id, UserDetailDTO userDetail) {
+    public UserDetailDTO updateUserDetail(Integer id, UserDetailDTO userDetail) {
         UserDetail userDetailRes = userDetailRepository.getReferenceById(id);
         userDetailRes.setFirstName(userDetail.getFirstName());
         userDetailRes.setLastName(userDetail.getLastName());
@@ -62,7 +62,7 @@ public class UserDetailServicesImplement implements UserDetailServices {
     }
 
     @Override
-    public Long deleteUserDetail(Long id) {
+    public Integer deleteUserDetail(Integer id) {
         userDetailRepository.deleteById(id);
         return id;
     }

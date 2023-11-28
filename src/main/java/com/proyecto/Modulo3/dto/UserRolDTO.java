@@ -11,11 +11,10 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class UserRolDTO {
 
-    private Long id;
+    private Integer id;
 
 
     private Boolean active;
@@ -24,8 +23,11 @@ public class UserRolDTO {
     private LocalDateTime createdAt;
 
 
-    private Long userId;
+    private Integer userId;
 
 
-    private Long rolId;
+    private Integer rolId;
+    public UserRolDTO(){
+
+    }
 }

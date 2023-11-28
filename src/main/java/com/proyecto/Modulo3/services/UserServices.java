@@ -1,16 +1,16 @@
 package com.proyecto.Modulo3.services;
 
 import com.proyecto.Modulo3.dto.UserDTO;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface UserServices {
 
     List<UserDTO> listUsers();
-    UserDTO getUser(Long id);
-    UserDTO createUser(UserDTO user);
-    UserDTO updateUser(Long id, UserDTO user);
-    Long deleteUser(Long id);
+    UserDTO save(UserDTO dto);
+    Optional<UserDTO> getUserById(Integer id);
+    void deleteUser(Integer id);
 }

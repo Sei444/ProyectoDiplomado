@@ -9,13 +9,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 public class UserDetailDTO {
 
     @Getter
     @Setter
-    private Long id;
+    private Integer id;
 
     @Getter
     @Setter
@@ -36,6 +36,10 @@ public class UserDetailDTO {
 
     @Getter
     @Setter
-    private User user;
+    public User user;
+
+    public UserDetailDTO(){
+
+    }
 
 }

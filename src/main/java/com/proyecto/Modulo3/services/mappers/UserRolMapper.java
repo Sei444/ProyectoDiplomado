@@ -13,8 +13,8 @@ public class UserRolMapper implements CustomMapper<UserRolDTO, UserRol> {
         UserRolDTO userRolDTO = new UserRolDTO();
         userRolDTO.setId(userRol.getId());
         userRolDTO.setActive(userRol.getActive());
-        userRolDTO.setUserId(userRol.getUser());
-        userRolDTO.setRolId(userRol.getRol());
+        userRolDTO.setUserId(userRol.getId());
+        userRolDTO.setRolId(userRol.getId());
         userRolDTO.setCreatedAt(userRol.getCreate_at());
         return userRolDTO;
     }

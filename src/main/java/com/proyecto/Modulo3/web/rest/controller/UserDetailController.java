@@ -2,6 +2,7 @@ package com.proyecto.Modulo3.web.rest.controller;
 
 import com.proyecto.Modulo3.dto.UserDetailDTO;
 import com.proyecto.Modulo3.services.UserDetailServices;
+import org.springframework.data.annotation.Id;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class UserDetailController {
     }
 
     @GetMapping(path = "/get/{id}")
-    public ResponseEntity<UserDetailDTO> getUserDetails(@PathVariable("id") Long userDetailId) {
+    public ResponseEntity<UserDetailDTO> getUserDetails(@PathVariable("id") Integer userDetailId) {
         return ResponseEntity.ok().body(userDetailServices.getUserDetail(userDetailId));
     }
 
@@ -34,13 +35,13 @@ public class UserDetailController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<UserDetailDTO> updateUserDetail(@PathVariable("id") Long userDetailId,
+    public ResponseEntity<UserDetailDTO> updateUserDetail(@PathVariable("id") Integer userDetailId,
                                                           @RequestBody UserDetailDTO userDetail) {
         return ResponseEntity.ok().body(userDetailServices.updateUserDetail(userDetailId, userDetail));
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public Long deleteUserDetail(@PathVariable("id") Long userDetailId) {
+    public Integer deleteUserDetail(@PathVariable("id") Integer userDetailId) {
         userDetailServices.deleteUserDetail(userDetailId);
         return userDetailId;
     }

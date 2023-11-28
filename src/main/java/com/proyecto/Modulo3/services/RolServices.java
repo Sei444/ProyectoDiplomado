@@ -8,11 +8,11 @@ import java.util.List;
 public interface RolServices {
     List<RolDTO> listRol();
 
-    RolDTO getRol(Long id);
+    RolDTO getRol(Integer id);
 
     RolDTO createRol(RolDTO rol);
 
-    Long deleteRol(Long id);
-    RolDTO updateRol(Long id, RolDTO rol);
+    Integer deleteRol(Integer id);
+    RolDTO updateRol(Integer id, RolDTO rol);
 
 }

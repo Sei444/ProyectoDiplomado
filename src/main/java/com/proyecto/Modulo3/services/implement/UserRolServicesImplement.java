@@ -7,8 +7,10 @@ import com.proyecto.Modulo3.repositories.UserRolRepository;
 import com.proyecto.Modulo3.services.UserRolServices;
 import com.proyecto.Modulo3.services.mappers.UserRolMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,54 +25,29 @@ public class UserRolServicesImplement implements UserRolServices {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<UserRolDTO> listUserRol() {
-        return userRolRepository.findAll().stream()
+        return userRolRepository.findAll()
+                .stream()
                 .map(userRolMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
-    public UserRolDTO getUserRol(Long id) {
-        List<UserRol> listUserRol = userRolRepository.findAll();
-        UserRol res = new UserRol();
-        for (UserRol aux : listUserRol) {
-            if (aux.getId() == id) {
-                res = aux;
-                break;
-            }
-        }
-        return this.userRolMapper.toDto(res);
+    public UserRolDTO save(UserRolDTO dto) {
+        return this.userRolMapper
+                .toDto(userRolRepository.save(this.userRolMapper.toEntity(dto)));
     }
 
     @Override
-    public UserRolDTO createUserRol(UserRolDTO userRol) {
-        return this.userRolMapper.toDto(userRolRepository.save(this.userRolMapper.toEntity(userRol)));
+    @Transactional(readOnly = true)
+    public Optional<UserRolDTO> getUserRolById(Integer id) {
+        return userRolRepository.findById(id).map(userRolMapper::toDto);
     }
 
     @Override
-    public UserRolDTO updateUserRol(Long id, UserRolDTO userRol) {
-        UserRol userRolRes = userRolRepository.getReferenceById(id);
-        userRolRes.setRol(userRol.getRolId());
-        userRolRes.setUser(userRol.getUserId());
-        userRolRes.setActive(userRol.getActive());
-        userRolRepository.save(userRolRes);
-        return this.userRolMapper.toDto(userRolRes);
-    }
-
-    @Override
-    public Long deleteUserRol(Long id) {
-        userRolRepository.deleteById(id);
-        return id;
-    }
-
-    @Override
-    public boolean setActive(Long id) {
-        UserRol userRolRes = userRolRepository.getReferenceById(id);
-        if (userRolRes.getActive()) {
-            userRolRes.setActive(false);
-        } else {
-            userRolRes.setActive(true);
-        }
-        userRolRepository.save(userRolRes);
-        return userRolRes.getActive();
+    public void deleteUserRol(Integer id) {
+        UserRol userRol = userRolRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Student with id: " + id + " is not existed."));
+        userRolRepository.save(userRol);
     }
 }

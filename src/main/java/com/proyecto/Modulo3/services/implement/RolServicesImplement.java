@@ -30,7 +30,7 @@ public class RolServicesImplement implements RolServices {
 
 
     @Override
-    public RolDTO getRol(Long id) {
+    public RolDTO getRol(Integer id) {
         List<Rol> listRol = rolRepository.findAll();
         Rol res = new Rol();
         for (Rol aux : listRol) {
@@ -50,7 +50,7 @@ public class RolServicesImplement implements RolServices {
 
 
     @Override
-    public RolDTO updateRol(Long id, RolDTO rol) {
+    public RolDTO updateRol(Integer id, RolDTO rol) {
         Rol rolRes = rolRepository.getReferenceById(id);
         rolRes.setId(rol.getId());
         rolRes.setName(rol.getName());
@@ -59,7 +59,7 @@ public class RolServicesImplement implements RolServices {
     }
 
     @Override
-    public Long deleteRol(Long id) {
+    public Integer deleteRol(Integer id) {
         rolRepository.deleteById(id);
         return id;
     }

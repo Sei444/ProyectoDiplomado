@@ -4,17 +4,17 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user_rol")
+@Table(name = "user_rol", schema = "public")
 public class UserRol {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "user_rol_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_rol_sequence")
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
 
     @Column(name = "active")
@@ -33,7 +33,7 @@ public class UserRol {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Rol rol;
 
-    public UserRol(Long id, Boolean active, LocalDateTime create_at, User userId, Rol rolId) {
+    public UserRol(Integer id, Boolean active, LocalDateTime create_at, User userId, Rol rolId) {
         this.id = id;
         this.active = active;
         this.create_at = create_at;
@@ -45,11 +45,12 @@ public class UserRol {
 
     }
 
-    public Long getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -66,23 +67,13 @@ public class UserRol {
     }
 
     public void setCreate_at(LocalDateTime create_at) {
-
         this.create_at = create_at;
     }
 
-    public Long getUser() {
-        return user.getId();
+
+    public void setUser(Integer userId) {
     }
 
-
-    public Long getRol() {
-
-        return rol.getId();
-    }
-
-    public void setRol(Long rol) {
-    }
-
-    public void setUser(Long userId) {
+    public void setRol(Integer rolId) {
     }
 }

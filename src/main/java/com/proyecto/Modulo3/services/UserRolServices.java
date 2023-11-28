@@ -1,16 +1,17 @@
 package com.proyecto.Modulo3.services;
 
 import com.proyecto.Modulo3.dto.UserRolDTO;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface UserRolServices {
     List<UserRolDTO> listUserRol();
-    UserRolDTO getUserRol(Long id);
-    UserRolDTO createUserRol(UserRolDTO userRol);
-    UserRolDTO updateUserRol(Long id, UserRolDTO userRol);
-    Long deleteUserRol(Long id);
-    boolean setActive(Long id);
+    Optional<UserRolDTO> getUserRolById(Integer id);
+
+
+    UserRolDTO save(UserRolDTO dto);
+    void deleteUserRol(Integer id);
 }

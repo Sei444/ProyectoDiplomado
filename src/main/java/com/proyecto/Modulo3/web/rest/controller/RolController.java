@@ -29,7 +29,7 @@ public class RolController {
     }
 
     @GetMapping(path = "/get/{id}")
-    public RolDTO getRol(@PathVariable("id") Long rolId) {
+    public RolDTO getRol(@PathVariable("id") Integer rolId) {
         return rolServices.getRol(rolId);
     }
 
@@ -40,13 +40,13 @@ public class RolController {
     }
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<RolDTO> updateRol(@PathVariable("id") Long rolId, @RequestBody RolDTO rol) {
+    public ResponseEntity<RolDTO> updateRol(@PathVariable("id") Integer rolId, @RequestBody RolDTO rol) {
 
         return ResponseEntity.ok().body(rolServices.updateRol(rolId, rol));
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public ResponseEntity<Long> deleteRol(@PathVariable("id") Long rolId) {
+    public ResponseEntity<Integer> deleteRol(@PathVariable("id") Integer rolId) {
         rolServices.deleteRol(rolId);
         return ResponseEntity.status(HttpStatus.OK).body(rolId);
     }
